@@ -1,0 +1,214 @@
+﻿<Window x:Class="BrailleArtist.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BrailleArtist"
+        mc:Ignorable="d"
+        x:Name="window" Title="{DynamicResource WindowTitle}" MinHeight="464" MinWidth="676" Height="464" Width="676"  AllowsTransparency="True" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" BorderThickness="8" FontSize="14" Background="Transparent" Icon="../icon.ico" KeyDown="OnKeyDown">
+    <Window.Resources>
+        <ResourceDictionary Source="../Assets/Styles/DefaultStyle.xaml"/>
+    </Window.Resources>
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="6" CaptionHeight="0" CornerRadius="10" />
+    </WindowChrome.WindowChrome>
+    <Window.Effect>
+        <DropShadowEffect ShadowDepth="0" BlurRadius="8" Opacity=".5" Color="Gray"/>
+    </Window.Effect>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard Storyboard="{StaticResource WindowAppearAnimation}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Border x:Name="MainGrid" CornerRadius="10,10,10,10" Background="White"  RenderTransformOrigin="0.5,0.5">
+        <Border.RenderTransform>
+            <ScaleTransform/>
+        </Border.RenderTransform>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border CornerRadius="10,10,0,0" Background="{DynamicResource ThemeColor}" MouseLeftButtonDown="WindowControl">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="2"  Direction="270" BlurRadius="8" Opacity=".6" Color="Gray"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Left" FontSize="16" Foreground="{DynamicResource ControlColor}" FontFamily="../Assets/Fonts/iconfont.ttf#iconfont" Text="&#xE600;" Margin="5,7,0,0"/>
+                        <Menu HorizontalAlignment="Left" Background="Transparent">
+                            <MenuItem Height="18" Width="18" Style="{StaticResource MenuItemStyle}" Cursor="Hand" ToolTip="{DynamicResource Setting}" Margin="5,7,0,0">
+                                <MenuItem Header="{DynamicResource Language}" FontSize="12" Foreground="Black">
+                                    <MenuItem.Icon>
+                                        <TextBlock FontFamily="../Assets/Fonts/iconfont.ttf#iconfont" FontSize="16" Text="&#xe611;"/>
+                                    </MenuItem.Icon>
+                                    <MenuItem Header="English" FontSize="12" Cursor="Hand" Click="Language_enUS_Click">
+                                        <MenuItem.Icon>
+                                            <TextBlock FontFamily="../Assets/Fonts/iconfont.ttf#iconfont" FontSize="16" Text="&#xe614;"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="中文" FontSize="12" Cursor="Hand" Click="Language_zhCN_Click">
+                                        <MenuItem.Icon>
+                                            <TextBlock FontFamily="../Assets/Fonts/iconfont.ttf#iconfont" FontSize="16" Text="&#xe613;"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </MenuItem>
+                                <MenuItem Header="{DynamicResource About}" FontSize="12" Foreground="Black" Cursor="Hand" Click="About_Click">
+                                    <MenuItem.Icon>
+                                        <TextBlock FontFamily="../Assets/Fonts/iconfont.ttf#iconfont" FontSize="16" Text="&#xe612;"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </MenuItem>
+                        </Menu>
+                    </Grid>
+                    <TextBlock VerticalAlignment="Center" Margin="30,0" FontSize="16" Foreground="{DynamicResource ControlColor}" Text="{DynamicResource WindowTitle}"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Style="{DynamicResource WindowControlButton}" Content="&#xE601;" ToolTip="{DynamicResource Minimize}" Click="MinimizeButton_Click"/>
+                        <Button x:Name="MaximizeButton" Style="{DynamicResource WindowControlButton}" Content="&#xE602;"  ToolTip="{DynamicResource Maximize}" Click="MaximizeButton_Click" />
+                        <Button Style="{DynamicResource WindowControlButton}" Content="&#xE604;" ToolTip="{DynamicResource Close}" Click="CloseButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Width="240">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border VerticalAlignment="Center"  Background="White" BorderBrush="#233" BorderThickness="2" CornerRadius="5" Margin="10"
+                             AllowDrop="True" Drop="Img_Drop" DragEnter="Img_DragEnter" MouseLeftButtonDown="Img_Choose">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity=".5" Color="Gray"/>
+                        </Border.Effect>
+                        <ScrollViewer>
+                            <Grid>
+                                <TextBlock x:Name="ImportHelpText" HorizontalAlignment="Center" VerticalAlignment="Stretch" TextAlignment="Center" Foreground="{DynamicResource FontColor}" FontWeight="Heavy" TextWrapping="Wrap" Opacity="0.5" Text="{DynamicResource ImportHelpText}" Margin="20,60"/>
+                                <Image x:Name="OraginImg" Stretch="Uniform" Source="{Binding ImgSource}" Margin="2">
+                                </Image>
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>
+                    <Border Grid.Row="1"  Background="White" BorderBrush="#233" BorderThickness="2" CornerRadius="5" Margin="10">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity=".5" Color="Gray"/>
+                        </Border.Effect>
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="35"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <UniformGrid Columns="5">
+                                    <Button Style="{StaticResource BorderlessButton}" FontFamily="../Assets/Fonts/iconfont.ttf#iconfont" Content="&#xe606;" Command="{Binding ImgChangeCommand}" CommandParameter="ColorReverse" ToolTip="{DynamicResource ColorReverse}" Margin="5"/>
+                                    <Button Style="{StaticResource BorderlessButton}" FontFamily="../Assets/Fonts/iconfont.ttf#iconfont" Content="&#xe607;" Command="{Binding ImgChangeCommand}" CommandParameter="Clockwise" ToolTip="{DynamicResource Clockwise}" Margin="5"/>
+                                    <Button Style="{StaticResource BorderlessButton}" FontFamily="../Assets/Fonts/iconfont.ttf#iconfont" Content="&#xe608;" Command="{Binding ImgChangeCommand}" CommandParameter="AntiClockwise" ToolTip="{DynamicResource AntiClockwise}" Margin="5"/>
+                                    <Button Style="{StaticResource BorderlessButton}" FontFamily="../Assets/Fonts/iconfont.ttf#iconfont" Content="&#xe609;" Command="{Binding ImgChangeCommand}" CommandParameter="FlipHorizontally" ToolTip="{DynamicResource FlipHorizontally}" Margin="5"/>
+                                    <Button Style="{StaticResource BorderlessButton}" FontFamily="../Assets/Fonts/iconfont.ttf#iconfont" Content="&#xe610;" Command="{Binding ImgChangeCommand}" CommandParameter="FlipVertically" ToolTip="{DynamicResource FlipVertically}" Margin="5"/>
+                                </UniformGrid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock VerticalAlignment="Center" Text="{DynamicResource Size}"/>
+                                <TextBox x:Name="Width_TextBox"  Grid.Column="1" VerticalAlignment="Stretch" Style="{StaticResource MyTextBox}" ToolTip="{DynamicResource Width_ToolTip}" Text="{Binding Width}" TextChanged="Size_Changed"/>
+                                <CheckBox x:Name="RatioLock" Grid.Column="2" Content="&#xe605;" ToolTip="{DynamicResource RatioLock}" IsChecked="{Binding IsRatioLock}"/>
+                                <TextBox x:Name="Height_TextBox" Grid.Column="3"  VerticalAlignment="Stretch" Style="{StaticResource MyTextBox}" ToolTip="{DynamicResource Height_ToolTip}" Text="{Binding Height}" TextChanged="Size_Changed"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock VerticalAlignment="Center" Text="{DynamicResource Level}"/>
+                                <Slider VerticalAlignment="Center" Grid.Column="1" Value="{Binding MiddleBright}" ValueChanged="MiddleBright_Changed"/>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <UniformGrid Columns="3" Margin="0,2">
+                                    <Button Style="{StaticResource MyButton}" Content="{DynamicResource Reset}" Command="{Binding MyCommand}" CommandParameter="Reset" ToolTip="{DynamicResource Reset_ToolTip}" Margin="2,0"/>
+                                    <Button Style="{StaticResource MyButton}" Content="{DynamicResource Draw}" Command="{Binding MyCommand}" CommandParameter="Draw" ToolTip="{DynamicResource Draw_ToolTip}" Margin="2,0"/>
+                                    <Button Style="{StaticResource MyButton}" Content="{DynamicResource Copy}" Command="{Binding MyCommand}" CommandParameter="Copy" ToolTip="{DynamicResource Copy_ToolTip}" Margin="2,0"/>
+                                </UniformGrid>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid Grid.Column="1" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Slider Maximum="30" Minimum="1" SmallChange="1" AutoToolTipPrecision="0" AutoToolTipPlacement="BottomRight" ToolTip="{DynamicResource FontSize}" Value="{Binding ViewFontSize}" Margin="10,5"/>
+                    <Border Grid.Row="1" Background="White" BorderBrush="#233" BorderThickness="2" CornerRadius="5">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity=".5" Color="Gray"/>
+                        </Border.Effect>
+                        <ScrollViewer Margin="1" HorizontalScrollBarVisibility="Auto">
+                            <TextBox x:Name="BrailleView" VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" IsReadOnly="True" FontSize="{Binding ViewFontSize}" Text="{Binding BrailleDraw}" PreviewMouseWheel="ViewScale_Change"/>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </Grid>
+            <Grid x:Name="LoadingGrid" Grid.Row="1" Visibility="{Binding LoadingVisibility}">
+                <Border Background="Black" Opacity="0" CornerRadius="5"/>
+                <Border VerticalAlignment="Center" HorizontalAlignment="Center" Background="Black" Opacity="0.4" CornerRadius="10">
+                    <TextBlock Foreground="White" FontSize="20" FontWeight="Bold" Text="{DynamicResource Processing}" Margin="10"/>
+                </Border>
+            </Grid>
+            <Grid x:Name="AboutView" Grid.Row="1" Visibility="Collapsed">
+                <Border Background="Black" Opacity="0.2" CornerRadius="5"/>
+                <Border VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="10" Background="White">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="8" Opacity=".6" Color="Gray"/>
+                    </Border.Effect>
+                    <Grid Width="400" Height="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button Style="{DynamicResource WindowControlButton}" HorizontalAlignment="Right" Foreground="{DynamicResource ThemeColor}" Content="&#xE604;" Click="About_Click"/>
+                        <Grid Grid.Row="1" Margin="20,0,20,20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Margin="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Foreground="{DynamicResource ThemeColor}" FontSize="80" FontFamily="../Assets/Fonts/iconfont.ttf#iconfont" Text="&#xe600;"/>
+                                <Button Style="{DynamicResource BorderlessButton}" Background="{DynamicResource ThemeColor}" Grid.Row="1" Click="GithubLink_Click">
+                                    <Grid Margin="10,5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Foreground="{DynamicResource ControlColor}" FontSize="16" FontFamily="../Assets/Fonts/iconfont.ttf#iconfont" Text="&#xe615;"/>
+                                        <TextBlock Grid.Column="1" Foreground="{DynamicResource ControlColor}" FontSize="16" Text="{DynamicResource Source}" Margin="5,0,0,0"/>
+                                    </Grid>
+                                </Button>
+                            </Grid>
+                            <Border Grid.Column="1" BorderThickness="2" BorderBrush="{DynamicResource ThemeColor}" CornerRadius="5" Margin="10">
+                                <ScrollViewer>
+                                    <TextBox VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" FontSize="12" BorderThickness="0" IsReadOnly="True" Margin="2,2,8,2"
+                                               Text="{DynamicResource Introduction}"/>
+                                </ScrollViewer>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

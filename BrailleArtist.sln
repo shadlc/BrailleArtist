@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrailleArtist", "BrailleArtist\BrailleArtist.csproj", "{ED959311-ED20-4BC1-BA11-0077A691AE59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED959311-ED20-4BC1-BA11-0077A691AE59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED959311-ED20-4BC1-BA11-0077A691AE59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED959311-ED20-4BC1-BA11-0077A691AE59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED959311-ED20-4BC1-BA11-0077A691AE59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2D464E3-0B02-40B0-82BE-481C82F3FD8B}
+	EndGlobalSection
+EndGlobal
