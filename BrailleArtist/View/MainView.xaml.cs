@@ -139,11 +139,11 @@ namespace BrailleArtist
         {
             if (Model.IsRatioLock)
             {
-                if (Width_TextBox.IsFocused == true && Regex.IsMatch(Width_TextBox.Text, @"^\d*[.]?\d*$"))
+                if (Width_TextBox.IsFocused == true && Width_TextBox.Text != "" && Regex.IsMatch(Width_TextBox.Text, @"^\d*[.]?\d*$"))
                 {
                     Model.Height = Convert.ToInt32(Convert.ToDouble(Width_TextBox.Text) / GValues.WidthDHeight);
                 }
-                else if (Height_TextBox.IsFocused == true && Regex.IsMatch(Height_TextBox.Text, @"^\d*[.]?\d*$"))
+                else if (Height_TextBox.IsFocused == true && Height_TextBox.Text != "" && Regex.IsMatch(Height_TextBox.Text, @"^\d*[.]?\d*$"))
                 {
                     Model.Width = Convert.ToInt32(Convert.ToDouble(Height_TextBox.Text) * GValues.WidthDHeight);
                 }

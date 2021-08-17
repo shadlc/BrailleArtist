@@ -159,7 +159,7 @@ namespace BrailleArtist.ViewModel
                     Height = 1000;
                     Width = Convert.ToInt32((float)Height * GValues.WidthDHeight);
                 }
-                else if (Width == 0 || Height == 0)
+                else if (Width < 2 || Height < 4)
                 {
                     return;
                 }
