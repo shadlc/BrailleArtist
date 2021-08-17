@@ -40,7 +40,7 @@ Clone Braille Artist locally and getting start with Visual Studio.
 
 ### Download Compiled EXE from [Releases](https://github.com/shadlc/BrailleArtist/releases)
 
-### Open Braille Artist.exe like this
+### Open BrailleArtist.exe like this
 
 <p align="center">
   <a href="Images/example.png">
