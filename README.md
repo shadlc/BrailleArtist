@@ -6,7 +6,8 @@
   <h1 align="center">Braille Artist</h1>
 </p>
 
-### Braille Artist is a braille ASCII art generator.
+### Braille Artist is a braille ASCII art generator with GUI that can convert images to braille ASCII art.
+### 盲文字符画生成器是一个图形界面的将图片转化为盲文字符画的小工具
 
 This is a braille ASCII art generator. The traditional  ASCII art generator is inefficient in space utilization. This software can use one braille as 8 pixels to generate ASCII art and display high-quality pictures in the text-only environment.
 
