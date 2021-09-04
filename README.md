@@ -34,7 +34,7 @@ If you prefer, you can compile Braille Artist yourself
   - Make sure you have the latest version installed
   - Make sure you have [the .NET Framework 4.5](https://dotnet.microsoft.com/download#windows) installed
 
-Clone Braille Artist locally and getting start with Visual Studio.
+- Clone Braille Artist locally and getting start with Visual Studio.
 
 
 ## Usage
