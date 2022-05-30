@@ -352,7 +352,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border Background="White" BorderThickness="5"  CornerRadius ="8" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Opacity="{Binding ShowModel.WindowOpacity}">
+                    <Border Background="White" BorderThickness="5"  CornerRadius ="8" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="0" BlurRadius="6" Opacity=".8" Color="Gray" />
                         </Border.Effect>

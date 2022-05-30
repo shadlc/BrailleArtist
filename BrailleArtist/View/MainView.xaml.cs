@@ -6,14 +6,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
 
 namespace BrailleArtist
 {
@@ -167,7 +164,7 @@ namespace BrailleArtist
                 await Task.Run(() =>
                 {
                     GValues.ImgName = importname;
-                    using(Stream ms = new MemoryStream(File.ReadAllBytes(importname)))
+                    using (Stream ms = new MemoryStream(File.ReadAllBytes(importname)))
                     {
                         GValues.Image = new Bitmap(ms);
                     }
@@ -202,7 +199,7 @@ namespace BrailleArtist
                 IMessageBox.Show(FindResource("MsgBoxImportErrorText").ToString(), FindResource("MsgBoxImportErrorTitle").ToString(), FindResource("MsgBoxImportErrorOK").ToString());
             }
         }
-        private void Language_Choose( string language)
+        private void Language_Choose(string language)
         {
             List<ResourceDictionary> dictionaryList = new List<ResourceDictionary>();
             foreach (ResourceDictionary dictionary in Application.Current.Resources.MergedDictionaries)

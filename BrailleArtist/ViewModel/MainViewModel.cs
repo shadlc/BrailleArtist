@@ -4,11 +4,8 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Media.Imaging;
-using System.Windows.Media.Media3D;
 
 namespace BrailleArtist.ViewModel
 {
@@ -109,7 +106,7 @@ namespace BrailleArtist.ViewModel
                 {
                     Width = GValues.Image.Width;
                     Height = GValues.Image.Height;
-                    if(Width != 0 && Height != 0) GValues.WidthDHeight = Width / Height;
+                    if (Width != 0 && Height != 0) GValues.WidthDHeight = Width / Height;
                     MiddleBright = GValues.PixelAverage;
                     ViewFontSize = 10;
                 }
@@ -182,7 +179,7 @@ namespace BrailleArtist.ViewModel
                             {
                                 float thisbrightness = bitmap.GetPixel(charno * 2 + x, row * 4 + y).GetBrightness();
                                 //If use homemade function "GetBrightness();" maybe more personalization.
-                                if ( thisbrightness < average) braille = braille + BrailleDot(x, y);
+                                if (thisbrightness < average) braille = braille + BrailleDot(x, y);
                                 else if (thisbrightness <= darkest)
                                 {
                                     darkest = thisbrightness;
