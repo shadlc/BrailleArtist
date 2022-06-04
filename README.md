@@ -11,7 +11,7 @@
 
 This is a braille ASCII art generator. The traditional  ASCII art generator is inefficient in space utilization. This software can use one braille as 8 pixels to generate ASCII art and display high-quality pictures in the text-only environment.
 
-Built against C# .NET 4.5, Braille Artist at Windows platform.
+Built against C# dotNET 4.5, Braille Artist at Windows platform.
 
 ### Language Support
  - English
