@@ -11,14 +11,14 @@
         <ResourceDictionary Source="../Assets/Styles/DefaultStyle.xaml"/>
     </Window.Resources>
     <Window.Effect>
-        <DropShadowEffect ShadowDepth="0" BlurRadius="8" Opacity=".5" Color="Gray"/>
+        <DropShadowEffect ShadowDepth="0" BlurRadius="8" Color="Gray"/>
     </Window.Effect>
     <Window.Triggers>
         <EventTrigger RoutedEvent="Loaded">
             <BeginStoryboard Storyboard="{StaticResource WindowAppearAnimation}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Border x:Name="MainGrid" CornerRadius="10,10,10,10" Background="White" RenderTransformOrigin="0.5,0.5">
+    <Border x:Name="MainGrid" CornerRadius="8" Background="White" RenderTransformOrigin="0.5,0.5">
         <Border.RenderTransform>
             <ScaleTransform/>
         </Border.RenderTransform>
@@ -27,7 +27,7 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Border CornerRadius="10,10,0,0"  Background="{DynamicResource ThemeColor}" MouseLeftButtonDown="WindowMove">
+            <Border CornerRadius="8,8,0,0"  Background="{DynamicResource ThemeColor}" MouseLeftButtonDown="WindowMove">
                 <Grid x:Name="ConrtolBox">
                     <Button HorizontalAlignment="Right" Style="{DynamicResource WindowControlButton}" Foreground="{DynamicResource ControlColor}" Content="&#xE604;" ToolTip="关闭" Click="CloseButton_Click"/>
                     <TextBlock x:Name="TitleLabel" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Title" Foreground="{DynamicResource ControlColor}" TextAlignment="Center"/>

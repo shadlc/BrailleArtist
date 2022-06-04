@@ -12,7 +12,6 @@ namespace BrailleArtist.ViewModel
     class MainViewModel : NotifyBase
     {
         public CommandBase ImgChangeCommand { get; set; }
-        public CommandBase MyCommand { get; set; }
 
         private string _brailledraw = null;
         public string BrailleDraw
@@ -40,7 +39,7 @@ namespace BrailleArtist.ViewModel
             {
                 _isratiolock = value;
                 DoNotify();
-                if (IsRatioLock && Width != 0 && Height != 0) GValues.WidthDHeight = (float)Width / (float)Height;
+                if (IsRatioLock && Width != 0 && Height != 0) GValues.Ratio = (float)Width / (float)Height;
             }
         }
         private string _loadingvisibility = "Collapsed";
@@ -70,15 +69,12 @@ namespace BrailleArtist.ViewModel
 
         public MainViewModel()
         {
-            ImgChangeCommand = new CommandBase();
-            ImgChangeCommand.DoExecute = new Action<object>(DoImgChange);
-            ImgChangeCommand.DoCanExecute = new Func<object, bool>((o) => { return true; });
+            ImgChangeCommand = new CommandBase
+            {
+                DoExecute = new Action<object>(DoImgChange),
+                DoCanExecute = new Func<object, bool>((o) => { return true; })
+            };
             ImgChangeCommand.CanExecuteChanged += null;
-
-            MyCommand = new CommandBase();
-            MyCommand.DoExecute = new Action<object>(DoMyCommand);
-            MyCommand.DoCanExecute = new Func<object, bool>((o) => { return true; });
-            MyCommand.CanExecuteChanged += null;
         }
         public async void DoImgChange(object o)
         {
@@ -98,30 +94,6 @@ namespace BrailleArtist.ViewModel
                 LoadingVisibility = "Collapsed";
             }
         }
-        public async void DoMyCommand(object o)
-        {
-            if (!String.IsNullOrEmpty(GValues.ImgName))
-            {
-                if (o.ToString() == "Reset")
-                {
-                    Width = GValues.Image.Width;
-                    Height = GValues.Image.Height;
-                    if (Width != 0 && Height != 0) GValues.WidthDHeight = Width / Height;
-                    MiddleBright = GValues.PixelAverage;
-                    ViewFontSize = 10;
-                }
-                else if (o.ToString() == "Draw")
-                {
-                    LoadingVisibility = "Visible";
-                    await Task.Run(() => DrawBraille());
-                    LoadingVisibility = "Collapsed";
-                }
-                else if (o.ToString() == "Copy")
-                {
-                    System.Windows.Forms.Clipboard.SetText(BrailleDraw);
-                }
-            }
-        }
         public void CountImg()
         {
             float average = 0;
@@ -133,7 +105,7 @@ namespace BrailleArtist.ViewModel
                 for (int y = 0; y < bitmap.Height / 4; y++)
                 {
                     float pixelbrightness = bitmap.GetPixel(x, y).GetBrightness();
-                    average = average + pixelbrightness;
+                    average += pixelbrightness;
                     pixelCount++;
                 }
             }
@@ -149,12 +121,12 @@ namespace BrailleArtist.ViewModel
                 if (Width > 2000)
                 {
                     Width = 1000;
-                    Height = Convert.ToInt32((float)Width / GValues.WidthDHeight);
+                    Height = Convert.ToInt32((float)Width / GValues.Ratio);
                 }
                 else if (Height > 2000)
                 {
                     Height = 1000;
-                    Width = Convert.ToInt32((float)Height * GValues.WidthDHeight);
+                    Width = Convert.ToInt32((float)Height * GValues.Ratio);
                 }
                 else if (Width < 2 || Height < 4)
                 {
@@ -179,7 +151,7 @@ namespace BrailleArtist.ViewModel
                             {
                                 float thisbrightness = bitmap.GetPixel(charno * 2 + x, row * 4 + y).GetBrightness();
                                 //If use homemade function "GetBrightness();" maybe more personalization.
-                                if (thisbrightness < average) braille = braille + BrailleDot(x, y);
+                                if (thisbrightness < average) braille += BrailleDot(x, y);
                                 else if (thisbrightness <= darkest)
                                 {
                                     darkest = thisbrightness;

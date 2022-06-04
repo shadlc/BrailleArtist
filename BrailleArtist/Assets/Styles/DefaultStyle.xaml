@@ -55,6 +55,34 @@
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
+    <Storyboard x:Key="WindowAppearAnimation">
+        <DoubleAnimation Duration="0:0:0.2" From="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="MainGrid"/>
+        <DoubleAnimation Duration="0:0:0.4" From="0.9" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" Storyboard.TargetName="MainGrid">
+            <DoubleAnimation.EasingFunction>
+                <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+        <DoubleAnimation Duration="0:0:0.4" From="0.9" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" Storyboard.TargetName="MainGrid">
+            <DoubleAnimation.EasingFunction>
+                <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+    </Storyboard>
+    <Storyboard x:Key="WindowDisappearAnimation">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="MainGrid" BeginTime="0:0:.2">
+            <EasingDoubleKeyFrame KeyTime="0:0:.2" Value="0"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimation Duration="0:0:0.4" From="1" To="0.8" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" Storyboard.TargetName="MainGrid">
+            <DoubleAnimation.EasingFunction>
+                <BackEase EasingMode="EaseIn" Amplitude="0.3"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+        <DoubleAnimation Duration="0:0:0.4" From="1" To="0.8" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" Storyboard.TargetName="MainGrid">
+            <DoubleAnimation.EasingFunction>
+                <BackEase EasingMode="EaseIn" Amplitude="0.3"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+    </Storyboard>
 
     <!--TextBox-->
     <Style x:Key="MyTextBox"  TargetType="{x:Type TextBox}">

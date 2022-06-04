@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BrailleArtist"
+        xmlns:viewmodel="clr-namespace:BrailleArtist.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
         mc:Ignorable="d"
         x:Name="window" Title="{DynamicResource WindowTitle}" MinHeight="464" MinWidth="676" Height="464" Width="676" WindowStyle="None" ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen" FontSize="14" Background="Transparent" Icon="../icon.ico" KeyDown="OnKeyDown" ContentRendered="Window_ContentRendered">
@@ -117,19 +118,19 @@
                                 <CheckBox x:Name="RatioLock" Grid.Column="2" Content="&#xe605;" ToolTip="{DynamicResource RatioLock}" IsChecked="{Binding IsRatioLock}"/>
                                 <TextBox x:Name="Height_TextBox" Grid.Column="3"  VerticalAlignment="Stretch" Style="{StaticResource MyTextBox}" ToolTip="{DynamicResource Height_ToolTip}" Text="{Binding Height}" TextChanged="Size_Changed"/>
                             </Grid>
-                            <Grid Grid.Row="2">
+                            <Grid Grid.Row="2" MouseUp="MiddleBright_MouseUp">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock VerticalAlignment="Center" Text="{DynamicResource Level}"/>
-                                <Slider VerticalAlignment="Center" Grid.Column="1" Value="{Binding MiddleBright}" ValueChanged="MiddleBright_Changed"/>
+                                <Slider VerticalAlignment="Center" Grid.Column="1" Value="{Binding MiddleBright}" ToolTip="{DynamicResource Level_ToolTip}"  ValueChanged="MiddleBright_Changed"/>
                             </Grid>
                             <Grid Grid.Row="3">
                                 <UniformGrid Columns="3" Margin="0,2">
-                                    <Button Style="{StaticResource MyButton}" Content="{DynamicResource Reset}" Command="{Binding MyCommand}" CommandParameter="Reset" ToolTip="{DynamicResource Reset_ToolTip}" Margin="2,0"/>
-                                    <Button Style="{StaticResource MyButton}" Content="{DynamicResource Draw}" Command="{Binding MyCommand}" CommandParameter="Draw" ToolTip="{DynamicResource Draw_ToolTip}" Margin="2,0"/>
-                                    <Button Style="{StaticResource MyButton}" Content="{DynamicResource Copy}" Command="{Binding MyCommand}" CommandParameter="Copy" ToolTip="{DynamicResource Copy_ToolTip}" Margin="2,0"/>
+                                    <Button Style="{StaticResource MyButton}" Content="{DynamicResource Reset}" ToolTip="{DynamicResource Reset_ToolTip}" Margin="2,0" Click="Reset_Button_Click"/>
+                                    <Button Style="{StaticResource MyButton}" Content="{DynamicResource Draw}" ToolTip="{DynamicResource Draw_ToolTip}" Margin="2,0" Click="Draw_Button_Click"/>
+                                    <Button Style="{StaticResource MyButton}" Content="{DynamicResource Copy}" ToolTip="{DynamicResource Copy_ToolTip}" Margin="2,0" Click="Copy_Button_Click"/>
                                 </UniformGrid>
                             </Grid>
                         </Grid>
@@ -140,13 +141,20 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Slider Maximum="30" Minimum="1" SmallChange="1" AutoToolTipPrecision="0" AutoToolTipPlacement="BottomRight" ToolTip="{DynamicResource FontSize}" Value="{Binding ViewFontSize}" Margin="10,5"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{DynamicResource FontSize}"/>
+                        <Slider Grid.Column="1" Maximum="30" Minimum="1" SmallChange="1" AutoToolTipPrecision="0" AutoToolTipPlacement="BottomRight" Value="{Binding ViewFontSize}" Margin="10,5"/>
+                    </Grid>
                     <Border Grid.Row="1" Background="White" BorderBrush="#233" BorderThickness="2" CornerRadius="5">
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity=".5" Color="Gray"/>
                         </Border.Effect>
-                        <ScrollViewer Margin="1" HorizontalScrollBarVisibility="Auto">
-                            <TextBox x:Name="BrailleView" VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" IsReadOnly="True" FontSize="{Binding ViewFontSize}" Text="{Binding BrailleDraw}" PreviewMouseWheel="ViewScale_Change"/>
+                        <ScrollViewer Margin="1" HorizontalScrollBarVisibility="Auto" PreviewMouseWheel="ViewScale_Change">
+                            <TextBox x:Name="BrailleView" VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" IsReadOnly="True" FontSize="{Binding ViewFontSize}" Text="{Binding BrailleDraw}"/>
                         </ScrollViewer>
                     </Border>
                 </Grid>

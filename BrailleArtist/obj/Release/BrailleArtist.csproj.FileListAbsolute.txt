@@ -1,0 +1,21 @@
+D:\Documents\C#\BrailleArtist\BrailleArtist\bin\Release\Braille Artist.exe.config
+D:\Documents\C#\BrailleArtist\BrailleArtist\bin\Release\Braille Artist.exe
+D:\Documents\C#\BrailleArtist\BrailleArtist\bin\Release\Braille Artist.pdb
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\Assets\Langs\en-US.baml
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\Assets\Langs\zh-CN.baml
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\Assets\Styles\DefaultStyle.baml
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\View\IMessageBox.g.cs
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\View\MainView.g.cs
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\App.g.cs
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\Braille Artist_MarkupCompile.cache
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\Braille Artist_MarkupCompile.lref
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\App.baml
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\View\IMessageBox.baml
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\View\MainView.baml
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\Braille Artist.g.resources
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\BrailleArtist.Properties.Resources.resources
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\BrailleArtist.csproj.GenerateResource.cache
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\BrailleArtist.csproj.CoreCompileInputs.cache
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\Braille Artist.exe
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\Braille Artist.pdb
+D:\Documents\C#\BrailleArtist\BrailleArtist\obj\Release\BrailleArtist.csproj.AssemblyReference.cache

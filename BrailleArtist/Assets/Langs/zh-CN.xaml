@@ -12,7 +12,9 @@
     <sys:String x:Key="ImportHelpText">拖入或点击此处导入图片</sys:String>
     <sys:String x:Key="MsgBoxImportErrorText">不支持该文件或文件被占用！</sys:String>
     <sys:String x:Key="MsgBoxImportErrorTitle">导入失败</sys:String>
-    <sys:String x:Key="MsgBoxImportErrorOK">好的</sys:String>
+    <sys:String x:Key="MsgBoxCopySuccessText">字符画已成功导入到剪切板！</sys:String>
+    <sys:String x:Key="MsgBoxCopySuccessTitle">复制字符画</sys:String>
+    <sys:String x:Key="MsgBoxOK">好的</sys:String>
     <sys:String x:Key="ImgChooseTitle">导入图片</sys:String>
     <sys:String x:Key="ImgChooseType">图片文件</sys:String>
     <sys:String x:Key="Processing">处理中...</sys:String>
@@ -23,16 +25,17 @@
     <sys:String x:Key="FlipVertically">上下翻转</sys:String>
     <sys:String x:Key="Size">大小：</sys:String>
     <sys:String x:Key="RatioLock">锁定长宽比</sys:String>
-    <sys:String x:Key="Width_ToolTip">字符画宽 = 此框数值 / 2</sys:String>
-    <sys:String x:Key="Height_ToolTip">字符画高 = 此框数值 / 4</sys:String>
+    <sys:String x:Key="Width_ToolTip">字符画宽 = 此框数值 / 2(最大值：2000)</sys:String>
+    <sys:String x:Key="Height_ToolTip">字符画高 = 此框数值 / 4(最大值：2000)</sys:String>
     <sys:String x:Key="Level">着色度：</sys:String>
+    <sys:String x:Key="Level_ToolTip">较小图片可以自动绘制</sys:String>
     <sys:String x:Key="Reset">重置</sys:String>
-    <sys:String x:Key="Reset_ToolTip">重置所有操作</sys:String>
+    <sys:String x:Key="Reset_ToolTip">重置所有操作(Del)</sys:String>
     <sys:String x:Key="Draw">绘制</sys:String>
-    <sys:String x:Key="Draw_ToolTip">重新绘制像素画</sys:String>
+    <sys:String x:Key="Draw_ToolTip">重新绘制像素画(Enter)</sys:String>
     <sys:String x:Key="Copy">复制</sys:String>
-    <sys:String x:Key="Copy_ToolTip">将整个字符画复制到剪贴板</sys:String>
-    <sys:String x:Key="FontSize">字号</sys:String>
+    <sys:String x:Key="Copy_ToolTip">将整个字符画复制到剪贴板(Ctrl+C)</sys:String>
+    <sys:String x:Key="FontSize">字号：</sys:String>
     <sys:String x:Key="Source">源代码</sys:String>
     <sys:String x:Key="Introduction">软件名：盲文字符画生成器       编程语言：C# dotNet WPF     开源协议：GPL       Copyright 2021 © 似然可绘&#x0a;&#x0a;软件介绍&#x0a;这是一款图形界面的盲文字符画生成器，传统的字符画生成器空间利用低效，此软件能够利用一个盲文字符作为八个像素点生成字符画，在纯文本环境下展示高质量图片。&#x0a;&#x0a;使用帮助&#x0a;点击或将文件拖入软件左上角的大框进行图片的导入，调整左下角的设置与参数。着色度滑条让用户能够自定义字符画颜色的深浅实现不同的效果，点击绘制按钮生成字符画。右侧上方的滑条能够调整展示字符画的字号，以供最佳的展示大小，也可以在字符画上按住Ctrl然后滚动鼠标滚轮进行缩放，最后点击复制按钮将整个字符画复制到剪贴板。</sys:String>
 </ResourceDictionary>
