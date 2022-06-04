@@ -25,6 +25,11 @@ namespace BrailleArtist
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             Language_Choose(System.Globalization.CultureInfo.CurrentCulture.Name);
         }
+
+        private void Window_ContentRendered(object sender, System.EventArgs e)
+        {
+            ResizeMode = ResizeMode.CanResize;
+        }
         private void WindowControl(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -81,12 +86,7 @@ namespace BrailleArtist
         }
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            var story = (Storyboard)Resources["WindowDisappearAnimation"];
-            if (story != null)
-            {
-                story.Completed += delegate { Close(); };
-                story.Begin(this);
-            }
+            Close();
         }
         private void About_Click(object sender, RoutedEventArgs e)
         {

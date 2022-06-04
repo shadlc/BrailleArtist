@@ -5,23 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BrailleArtist"
         mc:Ignorable="d"
-        x:Name="window" Title="{DynamicResource WindowTitle}" MinHeight="464" MinWidth="676" Height="464" Width="676"  AllowsTransparency="True" WindowStyle="None"
-        WindowStartupLocation="CenterScreen" BorderThickness="8" FontSize="14" Background="Transparent" Icon="../icon.ico" KeyDown="OnKeyDown">
+        x:Name="window" Title="{DynamicResource WindowTitle}" MinHeight="464" MinWidth="676" Height="464" Width="676" WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" FontSize="14" Background="Transparent" Icon="../icon.ico" KeyDown="OnKeyDown" ContentRendered="Window_ContentRendered">
     <Window.Resources>
         <ResourceDictionary Source="../Assets/Styles/DefaultStyle.xaml"/>
     </Window.Resources>
     <WindowChrome.WindowChrome>
-        <WindowChrome ResizeBorderThickness="6" CaptionHeight="0" CornerRadius="10" />
+        <WindowChrome ResizeBorderThickness="6" CaptionHeight="0" UseAeroCaptionButtons="False" GlassFrameThickness="-1" CornerRadius="8"/>
     </WindowChrome.WindowChrome>
-    <Window.Effect>
-        <DropShadowEffect ShadowDepth="0" BlurRadius="8" Opacity=".5" Color="Gray"/>
-    </Window.Effect>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Loaded">
-            <BeginStoryboard Storyboard="{StaticResource WindowAppearAnimation}"/>
-        </EventTrigger>
-    </Window.Triggers>
-    <Border x:Name="MainGrid" CornerRadius="10,10,10,10" Background="White"  RenderTransformOrigin="0.5,0.5">
+    <Border x:Name="MainGrid" CornerRadius="8" Background="White"  RenderTransformOrigin="0.5,0.5">
         <Border.RenderTransform>
             <ScaleTransform/>
         </Border.RenderTransform>
@@ -30,7 +22,7 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Border CornerRadius="10,10,0,0" Background="{DynamicResource ThemeColor}" MouseLeftButtonDown="WindowControl">
+            <Border CornerRadius="8,8,0,0" Background="{DynamicResource ThemeColor}" MouseLeftButtonDown="WindowControl">
                 <Border.Effect>
                     <DropShadowEffect ShadowDepth="2"  Direction="270" BlurRadius="8" Opacity=".6" Color="Gray"/>
                 </Border.Effect>
